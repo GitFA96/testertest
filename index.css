@@ -1,0 +1,27 @@
+.box {
+    text-align: center;
+    margin: auto;
+    width: fit-content;
+    height: 50px;
+    border: 5px solid black;
+}
+.box2 {
+    text-align: center;
+    padding: 20px;
+    border: 5px solid salmon;
+
+}
+
+.box3 {
+    text-align: center;
+    margin: auto;
+    border: 5px solid salmon;
+    overflow: hidden;
+}
+
+.img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+
+}
