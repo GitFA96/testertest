@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JSON Test</title>
+</head>
+<body>
+<p>ss</p>
+<div id="myData"> yoo</div>
+<script>
+    fetch('package.json')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            appendData(data);
+        })
+        .catch(function (err) {
+            console.log('error: ' + err);
+        });
+    function appendData(data) {
+        var mainContainer = document.getElementById("myData");
+        for (var i = 0; i < data.length; i++) {
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].firstname + ' ' + data[i].lastName;
+            mainContainer.appendChild(div);
+        }
+    }
+
+
+    <div id="mydata"></div>
+    <div id="console.log"></div>
+
+    fetch('https://bacit.info/hwr/20210929100622-6a9dae9bf58a61d25fb83a0fd32e96b7.json')
+        .then(function (response) {
+            return response.json();})
+        .then(function (data) {
+            appendData(data);})
+        .catch(function (err) {
+            console.log(err);});
+
+    function appendData(data) {
+        var mainContainer = document.getElementById("myData");
+        for (var i = 0; i < data.length; i++) {
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].cora + ' ' + data[i].dorn;
+            mainContainer.appendChild(div);
+        }
+    }
+
+    var data;
+    var request = new XMLHttpRequest();
+
+    request.open('get', 'js/https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json');
+
+    request.onreadystatechange = function () {
+        if(
+            request.status === 200 &&
+            request.readyState === 4
+        ) {
+            data = JSON.parse(request.responseText);
+            console.log(data);
+            console.log(request);
+        }
+    }
+    request.send();
+
+
+    var data, DOMnode;
+    var request = new XMLHttpRequest();
+
+    DOMnode = document.querySelector('.cora');
+
+    request.open('get', 'js/https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json');
+
+    request.onreadystatechange = function () {
+        if(
+            request.status === 200 &&
+            request.readyState === 4
+        ) {
+            data = JSON.parse(request.responseText);
+            for (var item in data.cora) {
+                if (data.cora.hasOwnProperty(item)) {
+                    var element = data.cora[item];
+                    var listItem = document.createElement('div');
+                    listItem.className = 'doras';
+                    listItem.innerHTML = '<h4<' + element.name + '</h4>'
+                    DOMnode.appendChild(listItem);
+                }
+            }
+        }
+    }
+    request.send();
+
+
+</script>
+</body>
+</html>
